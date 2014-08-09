@@ -15,3 +15,8 @@ Route::get('/', function()
 {
 	return View::make('hello');
 });
+
+// Adding the about route
+Route::get('about', function() {
+	return View::make('about');
+});
