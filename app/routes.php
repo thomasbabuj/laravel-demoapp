@@ -20,3 +20,6 @@ Route::get('/', function()
 Route::get('about', function() {
 	return View::make('about');
 });
+
+// Using Controllers
+Route::get('contact', 'Pages@contact');
