@@ -15,6 +15,7 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th>Name</th>
+                <th>Actions</th>
             </tr>
         </thead>
 
