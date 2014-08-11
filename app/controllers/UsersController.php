@@ -63,7 +63,11 @@ class UsersController extends \BaseController {
 	 */
 	public function show($id)
 	{
-		//
+		// show the user details 
+		$user = User::find($id);
+					
+		return View::make('users.show', compact('user'));
+
 	}
 
 
@@ -75,8 +79,16 @@ class UsersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
-	}
+		// Handing the user edit request
+		$user = User::find($id);
+
+		if ( is_null($user) )
+		{
+			return Redirect::route('users.index');
+		}	
+		
+		return View::make('users.edit', compact('user'));
+	}	
 
 
 	/**
@@ -87,7 +99,21 @@ class UsersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
+		// update users data to database
+		$input = Input::all();
+		$validation = Validator::make($input, User::$rules);
+		if ( $validation->passes() )
+		{
+			$user = User::find($id);
+			$user->update($input);
+			return Redirect::route('users.show', $id);
+		}
+
+		return Redirect::route('users.edit', $id)
+			->withInput()
+			->withErrors($validation)
+			->with('message', 'There were validation errors');
 	}
 
 
