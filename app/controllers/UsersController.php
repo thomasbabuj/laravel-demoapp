@@ -25,7 +25,8 @@ class UsersController extends \BaseController {
 	 */
 	public function create()
 	{
-		//
+		// Creating a new users
+		return View::make('users.create');
 	}
 
 
