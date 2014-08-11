@@ -37,7 +37,21 @@ class UsersController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		// To store our form data to database tabel
+		$input = Input::all();
+		$validation = Validator::make($input, User::$rules);
+
+		if( $validation->passes() )
+		{
+			User::create($input);
+
+			return Redirect::route('users.index');
+		}
+
+		return Redirect::route('users.create')
+			->withInput()
+			->withErrors($validation)
+			->with('message', 'There were validation errors.');
 	}
 
 
