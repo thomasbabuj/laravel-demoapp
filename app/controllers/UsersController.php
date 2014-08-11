@@ -10,7 +10,7 @@ class UsersController extends \BaseController {
 	public function index()
 	{
 		// Fetch users from our database via eloquent object
-		$users = User::all();
+		$users = User::paginate(5);
 
 		// calling index view
 		return View::make('users.index', compact('users'));

@@ -40,6 +40,8 @@
         </tbody>
     </table>
 
+    <div>{{  $users->links(); }}</div>
+
     @else
         There are no users
     @endif
