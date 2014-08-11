@@ -125,7 +125,9 @@ class UsersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		//
+		// delete a record
+		User::find($id)->delete();
+		return Redirect::route('users.index');
 	}
 
 
