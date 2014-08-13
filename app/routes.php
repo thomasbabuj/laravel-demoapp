@@ -13,5 +13,9 @@
 
 Route::get('/', function()
 {
-	return View::make('hello');
+	//return View::make('hello');
+	return View::make('hello')->
+		with('title', 'The Foldagram')->
+		with('page', 'home');
+
 });
